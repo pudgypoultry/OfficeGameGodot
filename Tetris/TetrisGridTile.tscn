@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://lkfx4b2uaaq0"]
+
+[ext_resource type="Texture2D" uid="uid://nabdrnv3ciuy" path="res://Tetris/TileTransparent.png" id="1_4utxu"]
+[ext_resource type="Script" uid="uid://2acq1olyq6if" path="res://GridTile.gd" id="2_3i8hg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4utxu"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3i8hg"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_4utxu")
+
+[node name="GridTile" type="TextureRect" unique_id=855339083]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4utxu")
+script = ExtResource("2_3i8hg")
+test_texture = SubResource("NoiseTexture2D_3i8hg")
+
+[connection signal="mouse_entered" from="." to="." method="debug_mouse_over"]
+[connection signal="mouse_exited" from="." to="." method="debug_mouse_exited"]

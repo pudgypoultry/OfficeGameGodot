@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d36n0giy5b145"]
+
+[ext_resource type="Script" uid="uid://baw0paknmblor" path="res://PlayerStateManager.gd" id="1_3mwrl"]
+[ext_resource type="Script" uid="uid://d188t5gr6n6kc" path="res://PlayerController.gd" id="1_y00gc"]
+[ext_resource type="Script" uid="uid://53npgp1lw7ox" path="res://BaseMovement.gd" id="2_y00gc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3mwrl"]
+
+[node name="PlayerController" type="CharacterBody3D" unique_id=1740228126]
+script = ExtResource("1_y00gc")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1704027271]
+current = true
+
+[node name="PlayerStateManager" type="Node" parent="." unique_id=719596709 node_paths=PackedStringArray("current_state", "states", "actor_reference")]
+script = ExtResource("1_3mwrl")
+current_state = NodePath("BaseMovement")
+states = {
+"Walking": NodePath("BaseMovement")
+}
+actor_reference = NodePath("..")
+
+[node name="BaseMovement" type="Node" parent="PlayerStateManager" unique_id=2089736530]
+script = ExtResource("2_y00gc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=38863811]
+shape = SubResource("CapsuleShape3D_3mwrl")
