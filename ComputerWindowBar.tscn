@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://dp8ljdd3urvpy"]
+
+[ext_resource type="Texture2D" uid="uid://8ilsvfb4utxx" path="res://StartButton.png" id="1_hnq5c"]
+
+[sub_resource type="FontFile" id="FontFile_wdeuu"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/17/0/ascent = 0.0
+cache/0/17/0/descent = 0.0
+cache/0/17/0/underline_position = 0.0
+cache/0/17/0/underline_thickness = 0.0
+cache/0/17/0/scale = 1.0
+cache/0/18/0/ascent = 0.0
+cache/0/18/0/descent = 0.0
+cache/0/18/0/underline_position = 0.0
+cache/0/18/0/underline_thickness = 0.0
+cache/0/18/0/scale = 1.0
+cache/0/19/0/ascent = 0.0
+cache/0/19/0/descent = 0.0
+cache/0/19/0/underline_position = 0.0
+cache/0/19/0/underline_thickness = 0.0
+cache/0/19/0/scale = 1.0
+cache/0/20/0/ascent = 0.0
+cache/0/20/0/descent = 0.0
+cache/0/20/0/underline_position = 0.0
+cache/0/20/0/underline_thickness = 0.0
+cache/0/20/0/scale = 1.0
+cache/0/21/0/ascent = 0.0
+cache/0/21/0/descent = 0.0
+cache/0/21/0/underline_position = 0.0
+cache/0/21/0/underline_thickness = 0.0
+cache/0/21/0/scale = 1.0
+cache/0/22/0/ascent = 0.0
+cache/0/22/0/descent = 0.0
+cache/0/22/0/underline_position = 0.0
+cache/0/22/0/underline_thickness = 0.0
+cache/0/22/0/scale = 1.0
+cache/0/23/0/ascent = 0.0
+cache/0/23/0/descent = 0.0
+cache/0/23/0/underline_position = 0.0
+cache/0/23/0/underline_thickness = 0.0
+cache/0/23/0/scale = 1.0
+cache/0/24/0/ascent = 0.0
+cache/0/24/0/descent = 0.0
+cache/0/24/0/underline_position = 0.0
+cache/0/24/0/underline_thickness = 0.0
+cache/0/24/0/scale = 1.0
+cache/0/25/0/ascent = 0.0
+cache/0/25/0/descent = 0.0
+cache/0/25/0/underline_position = 0.0
+cache/0/25/0/underline_thickness = 0.0
+cache/0/25/0/scale = 1.0
+
+[node name="ComputerWindowBar" type="MarginContainer" unique_id=1368674464]
+anchors_preset = -1
+offset_left = -250.0
+offset_top = -25.0
+offset_right = 250.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=587597806]
+clip_contents = true
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
+texture = ExtResource("1_hnq5c")
+region_rect = Rect2(0, 0, 200, 100)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect" unique_id=173989517]
+layout_mode = 0
+offset_left = 3.0000057
+offset_top = 3.0
+offset_right = 42.88674
+offset_bottom = 44.0
+scale = Vector2(12.36, 1)
+color = Color(0, 0.05708537, 0.7625, 1)
+
+[node name="Label" type="Label" parent="NinePatchRect" unique_id=1363798149]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 102.0
+offset_bottom = 42.0
+theme_override_fonts/font = SubResource("FontFile_wdeuu")
+theme_override_font_sizes/font_size = 25
+text = "Spreadsheets"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect" unique_id=1509286768]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = -17.0
+offset_right = -9.0
+offset_bottom = 13.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_hnq5c")
+region_rect = Rect2(0, 0, 200, 100)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect" unique_id=840928827]
+layout_mode = 0
+offset_left = 7.0
+offset_top = -4.0
+offset_right = 25.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("FontFile_wdeuu")
+theme_override_font_sizes/font_size = 25
+text = "X"

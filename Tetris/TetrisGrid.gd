@@ -174,7 +174,7 @@ func rotate_piece() -> void:
 		if is_valid_position(shifted_left):
 			apply_rotation(shifted_left)
 			return
-			
+		
 		# Wall Kick: Try shifting right 1 space
 		var shifted_right = shift_coords(rotated_coords, Vector2i(1, 0))
 		if is_valid_position(shifted_right):
