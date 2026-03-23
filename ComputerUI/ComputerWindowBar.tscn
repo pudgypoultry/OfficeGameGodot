@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dp8ljdd3urvpy"]
 
-[ext_resource type="Texture2D" uid="uid://8ilsvfb4utxx" path="res://StartButton.png" id="1_hnq5c"]
+[ext_resource type="Texture2D" uid="uid://8ilsvfb4utxx" path="res://ComputerUI/StartButton.png" id="1_hnq5c"]
 
 [sub_resource type="FontFile" id="FontFile_wdeuu"]
 cache/0/variation_coordinates = {}

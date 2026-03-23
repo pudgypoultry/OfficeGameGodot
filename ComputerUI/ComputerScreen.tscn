@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://c66g48rde1q5u"]
 
-[ext_resource type="Texture2D" uid="uid://8ilsvfb4utxx" path="res://StartButton.png" id="1_38huu"]
-[ext_resource type="Texture2D" uid="uid://dhwbmsqqaajfk" path="res://StartButtonInvert.png" id="2_elwrl"]
-[ext_resource type="PackedScene" uid="uid://dp8ljdd3urvpy" path="res://ComputerWindowBar.tscn" id="3_elwrl"]
+[ext_resource type="Texture2D" uid="uid://8ilsvfb4utxx" path="res://ComputerUI/StartButton.png" id="1_38huu"]
+[ext_resource type="Texture2D" uid="uid://dhwbmsqqaajfk" path="res://ComputerUI/StartButtonInvert.png" id="2_elwrl"]
+[ext_resource type="PackedScene" uid="uid://dp8ljdd3urvpy" path="res://ComputerUI/ComputerWindowBar.tscn" id="3_elwrl"]
 [ext_resource type="PackedScene" uid="uid://cdmrvut23dsea" path="res://Tetris/TetrisMinigame.tscn" id="4_u2bsk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u2bsk"]

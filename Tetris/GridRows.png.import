@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnyptvttyx442"
-path="res://.godot/imported/GridRows.png-fec9b7895660a5a34e0e63406029f23e.ctex"
+path="res://.godot/imported/GridRows.png-84f480e50ec5df02af17f6b95980ff6d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GridRows.png"
-dest_files=["res://.godot/imported/GridRows.png-fec9b7895660a5a34e0e63406029f23e.ctex"]
+source_file="res://Tetris/GridRows.png"
+dest_files=["res://.godot/imported/GridRows.png-84f480e50ec5df02af17f6b95980ff6d.ctex"]
 
 [params]
 

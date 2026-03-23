@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://lkfx4b2uaaq0"]
 
-[ext_resource type="Script" uid="uid://2acq1olyq6if" path="res://GridTile.gd" id="2_3i8hg"]
+[ext_resource type="Script" uid="uid://2acq1olyq6if" path="res://ComputerUI/GridTile.gd" id="2_3i8hg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_4utxu"]
 

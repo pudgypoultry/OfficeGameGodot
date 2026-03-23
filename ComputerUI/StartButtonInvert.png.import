@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cvc10xmfeaski"
-path="res://.godot/imported/GridCorner.png-49920eb34a669d2cdb79acc2b14c7b47.ctex"
+uid="uid://dhwbmsqqaajfk"
+path="res://.godot/imported/StartButtonInvert.png-cc3a861524a0db7c263f6dd1ed829867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GridCorner.png"
-dest_files=["res://.godot/imported/GridCorner.png-49920eb34a669d2cdb79acc2b14c7b47.ctex"]
+source_file="res://ComputerUI/StartButtonInvert.png"
+dest_files=["res://.godot/imported/StartButtonInvert.png-cc3a861524a0db7c263f6dd1ed829867.ctex"]
 
 [params]
 

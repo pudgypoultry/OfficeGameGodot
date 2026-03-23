@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://d36n0giy5b145"]
 
-[ext_resource type="Script" uid="uid://baw0paknmblor" path="res://PlayerStateManager.gd" id="1_3mwrl"]
-[ext_resource type="Script" uid="uid://d188t5gr6n6kc" path="res://PlayerController.gd" id="1_y00gc"]
-[ext_resource type="Script" uid="uid://53npgp1lw7ox" path="res://BaseMovement.gd" id="2_y00gc"]
+[ext_resource type="Script" uid="uid://baw0paknmblor" path="res://Player/States/PlayerStateManager.gd" id="1_3mwrl"]
+[ext_resource type="Script" uid="uid://d188t5gr6n6kc" path="res://Player/PlayerController.gd" id="1_y00gc"]
+[ext_resource type="Script" uid="uid://53npgp1lw7ox" path="res://Player/States/BaseMovement.gd" id="2_y00gc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3mwrl"]
 

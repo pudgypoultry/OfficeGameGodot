@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bhk01dnurq3j2"]
 
 [ext_resource type="PackedScene" uid="uid://6b6ychweg24d" path="res://basic_platform.tscn" id="1_y8ncq"]
-[ext_resource type="PackedScene" uid="uid://d36n0giy5b145" path="res://PlayerController.tscn" id="2_gaqdb"]
+[ext_resource type="PackedScene" uid="uid://d36n0giy5b145" path="res://Player/PlayerController.tscn" id="2_gaqdb"]
 [ext_resource type="Shader" uid="uid://b26gal8qrerl" path="res://Eyeball.gdshader" id="3_vrv26"]
 [ext_resource type="Texture2D" uid="uid://cmle42d0pyyux" path="res://Iris.png" id="4_vrv26"]
 [ext_resource type="Script" uid="uid://ck31dkhc1xuwn" path="res://Eyeball.gd" id="5_ti018"]
