@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nabdrnv3ciuy"
-path="res://.godot/imported/TileTransparent.png-37f242fc8db702ddbb330bf32d8f0349.ctex"
+uid="uid://bccu3k3i4ugj"
+path="res://.godot/imported/ComputerWindowBackground.png-ed175bae70db387354ec4bf722a2470c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tetris/TileTransparent.png"
-dest_files=["res://.godot/imported/TileTransparent.png-37f242fc8db702ddbb330bf32d8f0349.ctex"]
+source_file="res://ComputerWindowBackground.png"
+dest_files=["res://.godot/imported/ComputerWindowBackground.png-ed175bae70db387354ec4bf722a2470c.ctex"]
 
 [params]
 

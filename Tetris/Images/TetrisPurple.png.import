@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkxn6nv4lcbo3"
-path="res://.godot/imported/TetrisOrange.png-ee566f6461cdcb414538f510240cfcd8.ctex"
+uid="uid://cdwo8m27eywvl"
+path="res://.godot/imported/TetrisPurple.png-2d2355df8077d1e3227795a2ce176046.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tetris/TetrisOrange.png"
-dest_files=["res://.godot/imported/TetrisOrange.png-ee566f6461cdcb414538f510240cfcd8.ctex"]
+source_file="res://Tetris/Images/TetrisPurple.png"
+dest_files=["res://.godot/imported/TetrisPurple.png-2d2355df8077d1e3227795a2ce176046.ctex"]
 
 [params]
 

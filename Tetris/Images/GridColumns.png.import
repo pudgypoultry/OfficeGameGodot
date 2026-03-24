@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy0jmi6aencg5"
-path="res://.godot/imported/Grid.png-002e142049c9c125154ac5e1de7f8ba3.ctex"
+uid="uid://b717dhsn4ea7a"
+path="res://.godot/imported/GridColumns.png-3980bb9e9c7d8e71b7e0662669dd244d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tetris/Grid.png"
-dest_files=["res://.godot/imported/Grid.png-002e142049c9c125154ac5e1de7f8ba3.ctex"]
+source_file="res://Tetris/Images/GridColumns.png"
+dest_files=["res://.godot/imported/GridColumns.png-3980bb9e9c7d8e71b7e0662669dd244d.ctex"]
 
 [params]
 
