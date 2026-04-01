@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://sfgcp7vfddro"]
+
+[ext_resource type="Texture2D" uid="uid://6hhq5gwcfktl" path="res://ComputerWindowStretchable.png" id="1_otoag"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwli3"]
+texture = ExtResource("1_otoag")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4yhq3"]
+load_path = "res://.godot/imported/ComputerWindowStretchable.png-a0d8ec9903c1ee17504d970746cc47c5.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4xtid"]
+texture = SubResource("CompressedTexture2D_4yhq3")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+modulate_color = Color(0.41960785, 0.41960785, 0.41960785, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_afps3"]
+load_path = "res://.godot/imported/ComputerWindowStretchable.png-a0d8ec9903c1ee17504d970746cc47c5.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3x2f5"]
+texture = SubResource("CompressedTexture2D_afps3")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+modulate_color = Color(0.7607843, 0.7607843, 0.7607843, 1)
+
+[node name="TaskbarButton" type="Button" unique_id=612504131]
+custom_minimum_size = Vector2(80, 20)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_kwli3")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4xtid")
+theme_override_styles/hover = SubResource("StyleBoxTexture_3x2f5")
+toggle_mode = true
+button_pressed = true
+text = "NoText"

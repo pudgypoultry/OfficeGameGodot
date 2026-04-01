@@ -1,14 +1,17 @@
-class_name Win95Window
+class_name ComputerWindow
 extends Panel
 
 signal window_closed(window)
 signal window_focused(window)
+signal window_minimized(window)
+signal window_restored(window)
 
 @export var title: String = "Untitled" : set = set_title
 @export var app_icon: Texture2D : set = set_icon
 @export var resizable: bool = true
 @export var min_size: Vector2 = Vector2(200, 150)
 
+@onready var layout : VBoxContainer = $Layout
 @onready var title_label: Label = $Layout/TitleBar/OptionButtons/WindowName
 @onready var app_icon_rect: TextureRect = $Layout/TitleBar/OptionButtons/Icon
 @onready var title_bar: NinePatchRect = $Layout/TitleBar/TitleBarBackground
@@ -18,6 +21,7 @@ signal window_focused(window)
 @onready var content_area: MarginContainer = $Layout/Content
 
 const RESIZE_MARGIN: int = 6
+const CONTENT_PADDING: Vector2 = Vector2(0.01, 0.01)
 
 var _dragging: bool = false
 var _drag_offset: Vector2 = Vector2.ZERO
@@ -25,6 +29,7 @@ var _maximized: bool = false
 var _pre_max_rect: Rect2 = Rect2()
 var _resize_dir: Vector2 = Vector2.ZERO
 var _resizing: bool = false
+static var _active_drag: ComputerWindow = null
 
 
 func _ready() -> void:
@@ -33,9 +38,54 @@ func _ready() -> void:
 	close_btn.pressed.connect(_on_close)
 	minimize_btn.pressed.connect(_on_minimize)
 	maximize_btn.pressed.connect(_on_maximize)
-	title_bar.gui_input.connect(_on_titlebar_input)
 	gui_input.connect(_on_panel_input)
 	mouse_filter = Control.MOUSE_FILTER_STOP
+	await get_tree().process_frame
+	await get_tree().process_frame
+	_fit_to_content()
+
+
+func _process(_delta: float) -> void:
+	if _dragging and not _maximized:
+		position = get_parent().get_local_mouse_position() + _drag_offset
+		_clamp_to_parent()
+
+
+func _is_top_window() -> bool:
+	var parent = get_parent()
+	if not parent: return false
+	return parent.get_child(parent.get_child_count() - 1) == self
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if not event.pressed:
+			if _active_drag == self:
+				_active_drag = null
+			_dragging = false
+			_resizing = false
+		elif _is_on_titlebar(event.global_position):
+			if _active_drag != null:
+				return
+			_bring_to_front()
+			if event.double_click:
+				_on_maximize()
+				return
+			_active_drag = self
+			_dragging = true
+			_resizing = false
+			_resize_dir = Vector2.ZERO
+			_drag_offset = global_position - get_global_mouse_position()
+	if event is InputEventMouseMotion:
+		if _dragging and not _maximized:
+			global_position = get_global_mouse_position() + _drag_offset
+			_clamp_to_parent()
+		elif _resizing:
+			_do_resize(event.relative)
+
+
+func _is_on_titlebar(global_mouse: Vector2) -> bool:
+	return title_bar.get_global_rect().has_point(global_mouse)
 
 
 func set_title(new_title: String) -> void:
@@ -48,15 +98,28 @@ func set_icon(texture: Texture2D) -> void:
 	app_icon = texture
 	if is_node_ready():
 		app_icon_rect.texture = texture
-		app_icon_rect.visible = texture != null
 
 
 func load_content(scene: PackedScene) -> void:
-	# Clear any existing content
 	for child in content_area.get_children():
 		child.queue_free()
 	var node = scene.instantiate()
 	content_area.add_child(node)
+	await get_tree().process_frame
+	_fit_to_content()
+	window_focused.connect(_on_focused)
+
+
+func _on_focused(win: ComputerWindow) -> void:
+	var content = get_content()
+	if content.has_method("set_focus"):
+		content.set_focus(true)
+
+
+func _fit_to_content() -> void:
+	var required = layout.get_combined_minimum_size()
+	size = size.max(required + CONTENT_PADDING)
+	layout.size = size
 
 
 func get_content() -> Control:
@@ -64,7 +127,6 @@ func get_content() -> Control:
 	return children[0] if children.size() > 0 else null
 
 
-# --- Focus ---
 func _on_panel_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		_bring_to_front()
@@ -78,29 +140,18 @@ func _bring_to_front() -> void:
 	emit_signal("window_focused", self)
 
 
-# --- Drag ---
-func _on_titlebar_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			if event.double_click:
-				_on_maximize()
-				return
-			_dragging = event.pressed
-			if _dragging:
-				_drag_offset = global_position - get_global_mouse_position()
-				_bring_to_front()
-	if event is InputEventMouseMotion and _dragging and not _maximized:
-		global_position = get_global_mouse_position() + _drag_offset
-		_clamp_to_parent()
-
-
-# --- Resize ---
 func _check_resize_start(event: InputEventMouseButton) -> void:
 	if not resizable or _maximized:
 		return
 	if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		_resize_dir = _get_resize_direction(event.position)
 		_resizing = _resize_dir != Vector2.ZERO
+
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_RESIZED:
+		if is_node_ready():
+			layout.size = size
 
 
 func _get_resize_direction(mouse_pos: Vector2) -> Vector2:
@@ -110,15 +161,6 @@ func _get_resize_direction(mouse_pos: Vector2) -> Vector2:
 	if mouse_pos.y < RESIZE_MARGIN: dir.y = -1
 	elif mouse_pos.y > size.y - RESIZE_MARGIN: dir.y = 1
 	return dir
-
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and not event.pressed:
-		_dragging = false
-		_resizing = false
-	if event is InputEventMouseMotion:
-		if _resizing:
-			_do_resize(event.relative)
 
 
 func _do_resize(delta: Vector2) -> void:
@@ -137,10 +179,15 @@ func _do_resize(delta: Vector2) -> void:
 	position = new_pos
 
 
-# --- Minimize / Maximize / Close ---
 func _on_minimize() -> void:
 	visible = false
-	# Taskbar button should re-show it — connect to window_focused or handle externally
+	emit_signal("window_minimized", self)
+
+
+func restore() -> void:
+	visible = true
+	_bring_to_front()
+	emit_signal("window_restored", self)
 
 
 func _on_maximize() -> void:
@@ -163,8 +210,6 @@ func _on_close() -> void:
 
 
 func _clamp_to_parent() -> void:
-	var parent = get_parent()
-	if not parent: return
-	var p_size = parent.size
-	position.x = clamp(position.x, 0, p_size.x - size.x)
-	position.y = clamp(position.y, 0, p_size.y - size.y)
+	var bounds = get_viewport_rect()
+	global_position.x = clamp(global_position.x, bounds.position.x, bounds.position.x + bounds.size.x - size.x)
+	global_position.y = clamp(global_position.y, bounds.position.y, bounds.position.y + bounds.size.y - size.y)

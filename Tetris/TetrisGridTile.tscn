@@ -24,7 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-expand_mode = 3
+expand_mode = 1
 script = ExtResource("2_3i8hg")
 test_texture = SubResource("NoiseTexture2D_3i8hg")
 

@@ -22,8 +22,8 @@ var fall_interval : float = 0.5 # Seconds before piece automatically falls 1 til
 var is_active : bool = true
 var falling_piece : bool = false
 var cleaning_up : bool = false
+var has_focus: bool = true
 
-signal now_ready
 
 func _ready() -> void:
 	setup()
@@ -46,6 +46,10 @@ func setup() -> void:
 		tiles[i].prepare(self, i)
 
 
+func set_focus(focused: bool) -> void:
+	has_focus = focused
+
+
 # Spawns a 2x2 'O' piece at the top middle of the grid to test the system.
 func spawn_piece() -> void:
 	if !falling_piece:
@@ -57,7 +61,7 @@ func spawn_piece() -> void:
 		used_blocks.append(block.duplicate(true))
 		for vec in block:
 			active_piece_coords.append(Vector2i(vec.x + start_x, vec.y))
-		print(active_piece_coords)
+		# print(active_piece_coords)
 		if len(valid_blocks) == 0:
 			valid_blocks = used_blocks.duplicate(true)
 			used_blocks = []
@@ -72,7 +76,7 @@ func spawn_piece() -> void:
 
 # Handles automatic falling (gravity) and captures player movement input.
 func _process(delta: float) -> void:
-	if is_active && !cleaning_up:
+	if is_active && !cleaning_up && has_focus:
 		fall_timer += delta
 		if fall_timer >= fall_interval:
 			fall_timer = 0.0
@@ -133,19 +137,16 @@ func lock_piece() -> void:
 	for vec in active_piece_coords:
 		var tile = tile_rows[vec.y][vec.x]
 		tile.has_block = true
-		
 	active_piece_coords.clear()
 	line_checker.check_lines()
-	stall(0.2)
-	await now_ready
+	await stall(0.2)
 	falling_piece = false
 	spawn_piece()
 
 
-func stall(time : float):
+func stall(time: float) -> void:
 	is_active = false
 	await get_tree().create_timer(time).timeout
-	now_ready.emit()
 	is_active = true
 
 

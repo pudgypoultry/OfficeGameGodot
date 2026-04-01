@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://fpt58unti2r6"]
+
+[ext_resource type="Script" uid="uid://clgfwnibpsmjc" path="res://ComputerUI/ComputerDesktop.gd" id="1_vdov5"]
+[ext_resource type="PackedScene" uid="uid://cpfrx5yybra17" path="res://ComputerUI/ComputerWindow.tscn" id="2_a0d3t"]
+[ext_resource type="PackedScene" uid="uid://sfgcp7vfddro" path="res://ComputerUI/TaskbarButton.tscn" id="3_4yhq3"]
+[ext_resource type="Texture2D" uid="uid://6hhq5gwcfktl" path="res://ComputerWindowStretchable.png" id="3_a0d3t"]
+[ext_resource type="Texture2D" uid="uid://dt37b4eic6g4l" path="res://Logo.png" id="4_mdc4f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a0d3t"]
+texture = ExtResource("3_a0d3t")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4yhq3"]
+load_path = "res://.godot/imported/ComputerWindowStretchable.png-a0d8ec9903c1ee17504d970746cc47c5.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdc4f"]
+texture = SubResource("CompressedTexture2D_4yhq3")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+modulate_color = Color(0.41960785, 0.41960785, 0.41960785, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_afps3"]
+load_path = "res://.godot/imported/ComputerWindowStretchable.png-a0d8ec9903c1ee17504d970746cc47c5.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g2d24"]
+texture = SubResource("CompressedTexture2D_afps3")
+texture_margin_left = 2.0
+texture_margin_top = 2.0
+texture_margin_right = 2.0
+texture_margin_bottom = 2.0
+region_rect = Rect2(0, 0, 20, 20)
+modulate_color = Color(0.7607843, 0.7607843, 0.7607843, 1)
+
+[node name="ComputerDesktop" type="CanvasLayer" unique_id=388800118]
+script = ExtResource("1_vdov5")
+window_scene = ExtResource("2_a0d3t")
+taskbar_button_scene = ExtResource("3_4yhq3")
+
+[node name="Desktop" type="Control" parent="." unique_id=2074515728]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Wallpaper" type="ColorRect" parent="Desktop" unique_id=797556360]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.390625, 0.09750544, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Desktop" unique_id=1946488317]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -205.0
+offset_top = -205.0
+offset_right = 205.0
+offset_bottom = 205.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mdc4f")
+expand_mode = 1
+
+[node name="DesktopIcons" type="VBoxContainer" parent="Desktop" unique_id=605498667]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 400.0
+mouse_filter = 2
+
+[node name="WindowLayer" type="Control" parent="Desktop" unique_id=560403592]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Taskbar" type="NinePatchRect" parent="Desktop" unique_id=1098359289]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -28.0
+grow_vertical = 0
+texture = ExtResource("3_a0d3t")
+region_rect = Rect2(0, 0, 20, 20)
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Desktop/Taskbar" unique_id=1097092033]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="TaskbarLayout" type="HBoxContainer" parent="Desktop/Taskbar/MarginContainer" unique_id=2054586795]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="StartButton" type="Button" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout" unique_id=1709724231]
+custom_minimum_size = Vector2(75, 22)
+layout_mode = 2
+size_flags_vertical = 4
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxTexture_a0d3t")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mdc4f")
+theme_override_styles/hover = SubResource("StyleBoxTexture_g2d24")
+text = "Start"
+
+[node name="VSeparator" type="VSeparator" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout" unique_id=1626697550]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="AppButtons" type="HBoxContainer" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout" unique_id=1078564102]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="SystemTray" type="HBoxContainer" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout" unique_id=1526574587]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/separation = 4
+
+[node name="TrayIcons" type="HBoxContainer" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout/SystemTray" unique_id=769870671]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+
+[node name="Clock" type="Label" parent="Desktop/Taskbar/MarginContainer/TaskbarLayout/SystemTray" unique_id=1296768909]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
