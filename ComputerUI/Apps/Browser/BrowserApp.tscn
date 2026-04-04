@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://blcqd8k4ix18w"]
+
+[ext_resource type="Script" uid="uid://b0o64j6ogy6hw" path="res://ComputerUI/Apps/Browser/BrowserApp.gd" id="1_an4c6"]
+[ext_resource type="StyleBox" uid="uid://b0tag0c8s6jmf" path="res://ComputerUI/StartMenu/StartMenuItem.tres" id="2_h81vv"]
+[ext_resource type="PackedScene" uid="uid://nmoa8ic25d7t" path="res://ComputerUI/Apps/Browser/Pages/TestPage/TestPage.tscn" id="2_u7l88"]
+
+[node name="BrowserApp" type="VBoxContainer" unique_id=2039528419]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_an4c6")
+home_page = ExtResource("2_u7l88")
+
+[node name="Toolbar" type="Panel" parent="." unique_id=1373682062]
+custom_minimum_size = Vector2(0, 26)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = ExtResource("2_h81vv")
+
+[node name="MarginContainer" type="MarginContainer" parent="Toolbar" unique_id=1899703596]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Toolbar/MarginContainer" unique_id=784172765]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="Back" type="Button" parent="Toolbar/MarginContainer/HBoxContainer" unique_id=147367364]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("2_h81vv")
+theme_override_styles/pressed = ExtResource("2_h81vv")
+theme_override_styles/hover = ExtResource("2_h81vv")
+text = "◄"
+
+[node name="Forward" type="Button" parent="Toolbar/MarginContainer/HBoxContainer" unique_id=1836863849]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("2_h81vv")
+theme_override_styles/pressed = ExtResource("2_h81vv")
+theme_override_styles/hover = ExtResource("2_h81vv")
+text = "►"
+
+[node name="AddressBar" type="LineEdit" parent="Toolbar/MarginContainer/HBoxContainer" unique_id=1680650319]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Address"
+
+[node name="PageContainer" type="ScrollContainer" parent="." unique_id=1189465374]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
+horizontal_scroll_mode = 0

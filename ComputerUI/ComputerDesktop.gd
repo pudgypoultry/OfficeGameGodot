@@ -6,23 +6,25 @@ extends CanvasLayer
 @onready var start_button : Button = $Desktop/Taskbar/MarginContainer/TaskbarLayout/StartButton
 @onready var clock_label : Label = $Desktop/Taskbar/MarginContainer/TaskbarLayout/SystemTray/Clock
 @onready var desktop_icons : VBoxContainer = $Desktop/DesktopIcons
+@onready var start_menu : StartMenu = $StartMenu
 
 @export var window_scene : PackedScene
 @export var taskbar_button_scene : PackedScene
 
 var _clock_timer: float = 0.0
-var app_scene = preload("res://Tetris/TetrisMinigame.tscn")
+var tetris_scene = preload("res://ComputerUI/Apps/Tetris/TetrisMinigame.tscn")
+var browser_scene = preload("res://ComputerUI/Apps/Browser/BrowserApp.tscn")
 
 
 func _ready() -> void:
 	start_button.pressed.connect(_on_start_pressed)
 	_update_clock()
-	await get_tree().create_timer(0.75).timeout
-	open_window(app_scene, "Spreaddddsheeeetttssssss")
-	await get_tree().create_timer(0.75).timeout
-	open_window(app_scene, "Sheeeetttssssss")
-	await get_tree().create_timer(0.75).timeout
-	open_window(app_scene, "Spread")
+	#await get_tree().create_timer(0.75).timeout
+	#open_window(browser_scene, "Browser")
+	#await get_tree().create_timer(0.75).timeout
+	#open_window(app_scene, "Sheeeetttssssss")
+	#await get_tree().create_timer(0.75).timeout
+	#open_window(app_scene, "Spread")
 	
 
 
@@ -90,9 +92,7 @@ func _on_window_restored(win: ComputerWindow) -> void:
 
 
 func _on_window_closed(win: ComputerWindow) -> void:
-	print("window closed: ", win.title)
 	var btn = _get_taskbar_button(win)
-	print("button found: ", btn)
 	if btn:
 		btn.queue_free()
 
@@ -113,4 +113,19 @@ func add_desktop_icon(label: String, icon: Texture2D, app: PackedScene) -> void:
 # --- Start Menu (stub) ---
 
 func _on_start_pressed() -> void:
-	pass  # hook up a start menu popup here later
+	start_menu.visible = !start_menu.visible
+	if start_menu.visible:
+		_resize_start_menu()
+
+
+func _resize_start_menu() -> void:
+	var viewport_size = get_viewport().get_visible_rect().size
+	var viewport_height = viewport_size.y
+	var viewport_width = viewport_size.x
+	var taskbar_height = 28
+	var menu_height = viewport_height * 0.4
+	var menu_width = viewport_width * 0.15
+	start_menu.set_anchor_and_offset(SIDE_LEFT, 0.0, 0.0)
+	start_menu.set_anchor_and_offset(SIDE_RIGHT, 0.0, menu_width)
+	start_menu.set_anchor_and_offset(SIDE_TOP, 1.0, -(menu_height + taskbar_height))
+	start_menu.set_anchor_and_offset(SIDE_BOTTOM, 1.0, -taskbar_height)

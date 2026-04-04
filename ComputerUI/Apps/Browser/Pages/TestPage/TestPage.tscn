@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://nmoa8ic25d7t"]
+
+[ext_resource type="Script" uid="uid://cahxlai2wpp26" path="res://ComputerUI/Apps/Browser/Pages/TestPage/TestPage.gd" id="1_02e76"]
+
+[node name="TestPage" type="VBoxContainer" unique_id=2108070613]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_02e76")

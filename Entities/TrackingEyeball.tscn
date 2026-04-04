@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://cwe417f3jnm17"]
+
+[ext_resource type="Shader" uid="uid://b26gal8qrerl" path="res://Entities/Eyeball.gdshader" id="1_0hu5r"]
+[ext_resource type="Texture2D" uid="uid://cmle42d0pyyux" path="res://Iris.png" id="2_t0ocf"]
+[ext_resource type="Script" uid="uid://ck31dkhc1xuwn" path="res://Entities/Eyeball.gd" id="3_uoumn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vrv26"]
+render_priority = 0
+shader = ExtResource("1_0hu5r")
+shader_parameter/decal_texture = ExtResource("2_t0ocf")
+shader_parameter/decal_size = 0.62800002657012
+shader_parameter/decal_offset = Vector2(0, 0)
+shader_parameter/tint_color = Color(1, 0, 0, 1)
+shader_parameter/vein_count = 4.8470001827325
+shader_parameter/vein_jitter = 3.6490001733275
+shader_parameter/vein_width = 0.00800000038
+shader_parameter/vein_length = 1.19100005331262
+shader_parameter/vein_speed = 0.14400000684
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ti018"]
+next_pass = SubResource("ShaderMaterial_vrv26")
+albedo_color = Color(0.99607843, 0.99607843, 0.99607843, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_fucb2"]
+material = SubResource("StandardMaterial3D_ti018")
+
+[node name="Eyeball" type="MeshInstance3D" unique_id=1332389889]
+mesh = SubResource("SphereMesh_fucb2")
+script = ExtResource("3_uoumn")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="OfficeGameGodot"
-run/main_scene="uid://cdmrvut23dsea"
+run/main_scene="uid://bhk01dnurq3j2"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

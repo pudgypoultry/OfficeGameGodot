@@ -1,7 +1,8 @@
 extends State
 
 @export var movement_speed : float = 5.0
-@export var mouse_sensitivity : float = 0.05
+@export var mouse_sensitivity_x : float = 0.01
+@export var mouse_sensitivity_y : float = 0.05
 @export var rotation_bounds : float = 80.0
 @export var deceleration : float = 35.0
 
@@ -39,6 +40,6 @@ func movement_behavior(delta : float) -> void:
 
 func rotation_behavior(event : InputEvent):
 	if event is InputEventMouseMotion:
-		actor_reference.rotate_y(-event.relative.x * mouse_sensitivity)
-		actor_reference.rotation.x += -event.relative.y * mouse_sensitivity
+		actor_reference.rotate_y(-event.relative.x * mouse_sensitivity_x)
+		actor_reference.rotation.x += -event.relative.y * mouse_sensitivity_y
 		actor_reference.rotation.x = clampf(actor_reference.rotation.x, deg_to_rad(-rotation_bounds), deg_to_rad(rotation_bounds))

@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cdmrvut23dsea"]
+
+[ext_resource type="Texture2D" uid="uid://dy0jmi6aencg5" path="res://ComputerUI/Apps/Tetris/Images/Grid.png" id="1_1y86p"]
+[ext_resource type="Script" uid="uid://cbnq52teepgbc" path="res://ComputerUI/Apps/Tetris/TetrisGrid.gd" id="1_t28kq"]
+[ext_resource type="Texture2D" uid="uid://cvc10xmfeaski" path="res://ComputerUI/Apps/Tetris/Images/GridCorner.png" id="1_vili7"]
+[ext_resource type="Texture2D" uid="uid://b717dhsn4ea7a" path="res://ComputerUI/Apps/Tetris/Images/GridColumns.png" id="2_2qiov"]
+[ext_resource type="PackedScene" uid="uid://lkfx4b2uaaq0" path="res://ComputerUI/Apps/Tetris/TetrisGridTile.tscn" id="2_gc84n"]
+[ext_resource type="Texture2D" uid="uid://bgvkmgsm5gx1r" path="res://ComputerUI/Apps/Tetris/Images/TetrisBlue.png" id="3_sqff5"]
+[ext_resource type="Script" uid="uid://dcq5gghd0ufj7" path="res://ComputerUI/Apps/Tetris/TetrisLineChecker.gd" id="3_t28kq"]
+[ext_resource type="Texture2D" uid="uid://cnyptvttyx442" path="res://ComputerUI/Apps/Tetris/Images/GridRows.png" id="3_xo1g8"]
+[ext_resource type="Texture2D" uid="uid://b8k5w34se13e" path="res://ComputerUI/Apps/Tetris/Images/TetrisGreen.png" id="4_w5oew"]
+[ext_resource type="Texture2D" uid="uid://bipnlx735leu1" path="res://ComputerUI/Apps/Tetris/Images/TetrisMail.png" id="5_e786j"]
+[ext_resource type="Texture2D" uid="uid://cd123o3nlaaut" path="res://ComputerUI/Apps/Tetris/Images/TetrisMessenger.png" id="6_1y86p"]
+[ext_resource type="Texture2D" uid="uid://bkxn6nv4lcbo3" path="res://ComputerUI/Apps/Tetris/Images/TetrisOrange.png" id="7_j0822"]
+[ext_resource type="Texture2D" uid="uid://cdwo8m27eywvl" path="res://ComputerUI/Apps/Tetris/Images/TetrisPurple.png" id="8_f04lt"]
+[ext_resource type="Texture2D" uid="uid://8ibd3ndkjjkk" path="res://ComputerUI/Apps/Tetris/Images/TetrisRed.png" id="9_e786j"]
+
+[node name="TetrisMinigame" type="MarginContainer" unique_id=2108444825]
+offset_right = 450.0
+offset_bottom = 699.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=474293054]
+visible = false
+layout_mode = 2
+color = Color(0.44687498, 0.44687498, 0.44687498, 1)
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1456514581]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/h_separation = 1
+theme_override_constants/v_separation = 1
+columns = 2
+
+[node name="Corner" type="TextureRect" parent="GridContainer" unique_id=1475804456]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource("1_vili7")
+
+[node name="Columns" type="TextureRect" parent="GridContainer" unique_id=1131927080]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture = ExtResource("2_2qiov")
+
+[node name="Rows" type="TextureRect" parent="GridContainer" unique_id=1265883363]
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
+texture = ExtResource("3_xo1g8")
+
+[node name="MarginContainer" type="MarginContainer" parent="GridContainer" unique_id=656788395]
+custom_minimum_size = Vector2(380, 659)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="GridBackground" type="TextureRect" parent="GridContainer/MarginContainer" unique_id=204282914]
+custom_minimum_size = Vector2(380, 659)
+layout_mode = 2
+texture = ExtResource("1_1y86p")
+stretch_mode = 2
+
+[node name="TetrisGrid" type="GridContainer" parent="GridContainer/MarginContainer" unique_id=2032747049]
+custom_minimum_size = Vector2(380, 659)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+columns = 10
+script = ExtResource("1_t28kq")
+tile_object = ExtResource("2_gc84n")
+active_block_texture = ExtResource("3_sqff5")
+valid_blocks = Array[Array]([[Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)], [Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(-1, 0)], [Vector2i(0, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 1)], [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 1)], [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 2)], [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(-1, 2)], [Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]])
+texture_dict = {
+[Vector2i(0, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(1, 1)]: ExtResource("5_e786j"),
+[Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(-1, 2)]: ExtResource("8_f04lt"),
+[Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]: ExtResource("3_sqff5"),
+[Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(1, 2)]: ExtResource("7_j0822"),
+[Vector2i(0, 0), Vector2i(0, 1), Vector2i(1, 0), Vector2i(-1, 0)]: ExtResource("4_w5oew"),
+[Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 1)]: ExtResource("6_1y86p"),
+[Vector2i(0, 0), Vector2i(1, 0), Vector2i(0, 1), Vector2i(1, 1)]: ExtResource("9_e786j")
+}
+
+[node name="LineChecker" type="Node" parent="GridContainer/MarginContainer/TetrisGrid" unique_id=994172126]
+script = ExtResource("3_t28kq")

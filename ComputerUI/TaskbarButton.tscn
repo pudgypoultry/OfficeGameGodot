@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://sfgcp7vfddro"]
 
-[ext_resource type="Texture2D" uid="uid://6hhq5gwcfktl" path="res://ComputerWindowStretchable.png" id="1_otoag"]
+[ext_resource type="Texture2D" uid="uid://6hhq5gwcfktl" path="res://ComputerUI/ComputerWindowStretchable.png" id="1_otoag"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kwli3"]
 texture = ExtResource("1_otoag")
